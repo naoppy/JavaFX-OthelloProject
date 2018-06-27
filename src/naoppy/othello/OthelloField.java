@@ -38,8 +38,8 @@ public class OthelloField {
         return sb.toString();
     }
 
-    public void putNewKoma(int y, int x) {
-
+    public boolean putNewKoma(int y, int x) {
+        return false;
     }
 
     public boolean getIsNextIsWhite() {
