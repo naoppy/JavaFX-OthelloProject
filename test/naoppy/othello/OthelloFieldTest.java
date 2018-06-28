@@ -144,4 +144,14 @@ class OthelloFieldTest {
                         "\n        ";
         assertEquals(expectedString, field.toString(), "右上と挟めなければいけない");
     }
+
+    @Test
+    void putOutOfIndexFailTest() {
+        assertFalse(field.putNewKoma(-1,5), "負の座標には置けない");
+    }
+
+    @Test
+    void putOutOfIndexFailTest2() {
+        assertFalse(field.putNewKoma(2,8), "8以上の座標には置けない");
+    }
 }

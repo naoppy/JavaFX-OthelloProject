@@ -49,17 +49,22 @@ public class OthelloField {
         return sb.toString();
     }
 
-    static int[] lookingWayX = {1, 0, -1, 0, 1, -1, -1, 1};
-    static int[] lookingWayY = {0, 1, 0, -1, 1, 1, -1, -1};
+    private static int[] lookingWayX = {1, 0, -1, 0, 1, -1, -1, 1};
+    private static int[] lookingWayY = {0, 1, 0, -1, 1, 1, -1, -1};
 
     /**
      * 新しく駒を置きます.
      *
-     * @param y 新しく駒を置くy座標(0-indexed)
-     * @param x 新しく駒を置くx座標(0-indexed)
+     * @param y 新しく駒を置くy座標(0-indexed)、0～7の間で指定する
+     * @param x 新しく駒を置くx座標(0-indexed)、0～7の間で指定する
      * @return オセロのルールに従って置くことに成功したか
      */
     public boolean putNewKoma(int y, int x) {
+        //範囲外の場合
+        if(x < 0 || y < 0 || x > 7 || y > 7) {
+            return false;
+        }
+        //1-indexedに変換
         y++;
         x++;
         //既にある場所に重ねて置けない
@@ -79,7 +84,7 @@ public class OthelloField {
                     lookingX += lookingWayX[i];
                 }
                 if (fieldMap[lookingY][lookingX] == puttingPlayerKoma) {
-                    isUpdated |= true;
+                    isUpdated = true;
                     while (!(lookingY == y && lookingX == x)) {
                         fieldMap[lookingY][lookingX] = puttingPlayerKoma;
                         lookingY -= lookingWayY[i];
@@ -89,7 +94,7 @@ public class OthelloField {
                 }
             }
         }
-        if (isUpdated) this.nextIsWhite = !this.nextIsWhite;
+        if (isUpdated) this.setNextIsWhite(!this.getNextIsWhite());
 
         return isUpdated;
     }
