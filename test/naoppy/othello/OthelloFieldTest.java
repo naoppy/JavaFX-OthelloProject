@@ -1,6 +1,5 @@
 package naoppy.othello;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,22 +29,6 @@ class OthelloFieldTest {
     @Test
     void putNewKomaCanPutUpperClose() {
         assertTrue(field.putNewKoma(2,4), "縦に挟めるはず");
-    }
-
-    @Test
-    void putNewKomaUpdateUpperClose() {
-        field.putNewKoma(2,4);
-
-        String expectedString =
-                "        " +
-                        "\n        " +
-                        "\n    o   " +
-                        "\n   oo   " +
-                        "\n   xo   " +
-                        "\n        " +
-                        "\n        " +
-                        "\n        ";
-        assertEquals(expectedString, field.toString(), "縦に挟めなければいけない");
     }
 
     @Test
@@ -79,6 +62,22 @@ class OthelloFieldTest {
     @Test
     void putNewKomaOverExsitedKomaFailTest() {
         assertFalse(field.putNewKoma(3,3) ,"既に置いてある駒の上に置けない");
+    }
+
+    @Test
+    void putNewKomaUpdateUpperClose() {
+        field.putNewKoma(2,4);
+
+        String expectedString =
+                "        " +
+                        "\n        " +
+                        "\n    o   " +
+                        "\n   oo   " +
+                        "\n   xo   " +
+                        "\n        " +
+                        "\n        " +
+                        "\n        ";
+        assertEquals(expectedString, field.toString(), "縦に挟めなければいけない");
     }
 
     @Test
@@ -127,5 +126,22 @@ class OthelloFieldTest {
                         "\n        " +
                         "\n        ";
         assertEquals(expectedString, field.toString(), "左と挟めなければいけない");
+    }
+
+    @Test
+    void putNewKomaUpdateUpper_Right() {
+        field.putNewKoma(3,5);
+        field.putNewKoma(2,5);
+
+        String expectedString =
+                "        " +
+                        "\n        " +
+                        "\n     x  " +
+                        "\n   oxo  " +
+                        "\n   xo   " +
+                        "\n        " +
+                        "\n        " +
+                        "\n        ";
+        assertEquals(expectedString, field.toString(), "右上と挟めなければいけない");
     }
 }

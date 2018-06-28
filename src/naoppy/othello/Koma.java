@@ -1,6 +1,7 @@
 package naoppy.othello;
 
-public enum Koma {
+enum Koma {
+    WALL,
     NONE,
     WHITE,
     BLACK;
