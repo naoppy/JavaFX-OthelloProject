@@ -78,14 +78,14 @@ public class OthelloField {
             int lookingY = y, lookingX = x;
             lookingY += lookingWayY[i];
             lookingX += lookingWayX[i];
-            if (fieldMap[lookingY][lookingX] == enemyPlayerKoma) {
+            if (fieldMap[lookingY][lookingX] == enemyPlayerKoma) {//敵の駒なら、敵の駒が続くまで移動
                 while (fieldMap[lookingY][lookingX] == enemyPlayerKoma) {
                     lookingY += lookingWayY[i];
                     lookingX += lookingWayX[i];
                 }
-                if (fieldMap[lookingY][lookingX] == puttingPlayerKoma) {
+                if (fieldMap[lookingY][lookingX] == puttingPlayerKoma) {//最後が自分の駒で終わっているか
                     isUpdated = true;
-                    while (!(lookingY == y && lookingX == x)) {
+                    while (!(lookingY == y && lookingX == x)) {//その間を自分の駒にしていく
                         fieldMap[lookingY][lookingX] = puttingPlayerKoma;
                         lookingY -= lookingWayY[i];
                         lookingX -= lookingWayX[i];
@@ -94,6 +94,7 @@ public class OthelloField {
                 }
             }
         }
+        //敵のターンに
         if (isUpdated) this.setNextIsWhite(!this.getNextIsWhite());
 
         return isUpdated;

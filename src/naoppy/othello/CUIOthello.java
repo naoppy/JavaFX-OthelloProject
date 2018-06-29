@@ -3,10 +3,25 @@ package naoppy.othello;
 import java.awt.*;
 
 public class CUIOthello implements Runnable {
-
+    /**
+     * 2人のプレイヤー
+     */
     private OthelloPlayer player1;
     private OthelloPlayer player2;
+    /**
+     * オセロの盤
+     */
     private OthelloField othelloField = new OthelloField();
+
+    /**
+     * 渡された二つのプレイヤーを登録します
+     * @param p1 プレイヤー1
+     * @param p2 プレイヤー2
+     */
+    public CUIOthello(OthelloPlayer p1, OthelloPlayer p2) {
+        this.player1 = p1;
+        this.player2 = p2;
+    }
 
     public void run() {
         for(int i = 0; i < 60; i++) {
@@ -25,11 +40,10 @@ public class CUIOthello implements Runnable {
         } while(!othelloField.putNewKoma(p.y, p.x));
     }
 
-    public CUIOthello(OthelloPlayer p1, OthelloPlayer p2) {
-        this.player1 = p1;
-        this.player2 = p2;
-    }
-
+    /**
+     * オセロの文字列表現を分かりやすく整形します
+     * @return 装飾されたオセロの盤の文字列表現
+     */
     private String DecorateOthelloField() {
         StringBuilder sb = new StringBuilder();
         String header = " 01234567\n";
