@@ -1,26 +1,19 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import naoppy.othello.Koma;
 import naoppy.othello.OthelloField;
-import naoppy.othello.OthelloPlayer;
-
-import java.util.function.Consumer;
 
 public class Main extends Application {
 
     private OthelloField othelloField = new OthelloField();
+
+    private GridPane viewer;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -33,18 +26,46 @@ public class Main extends Application {
                 int finalY = y, finalX = x;
                 imageView.setOnMouseClicked(event -> {
                     othelloField.putNewKoma(finalY,finalX);
+                    update();
                 });
                 root.add(imageView, y, x);
             }
         }
+        viewer = root;
+        update();
 
         primaryStage.setTitle("Naoppy Othello");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void update() {
+        Koma[][] map = othelloField.getFieldMap();
+        for(int y = 0; y < 8; y++) {
+            for(int x = 0; x < 8; x++) {
+                ImageView imageView = (ImageView)viewer.getChildren().get(8*y+x);
+                imageView.setImage(selectImage(map[y+1][x+1]));
+            }
+        }
+    }
+
+    private Image selectImage(Koma koma) {
+        Image image = null;
+        switch (koma) {
+            case NONE:
+                image = new Image(this.getClass().getResourceAsStream("../None.png"));
+                break;
+            case WHITE:
+                image = new Image(this.getClass().getResourceAsStream("../White.png"));
+                break;
+            case BLACK:
+                image = new Image(this.getClass().getResourceAsStream("../Black.png"));
+                break;
+        }
+        return image;
     }
 }

@@ -3,7 +3,7 @@ package naoppy.othello;
 /**
  * オセロの駒を表す列挙型
  */
-enum Koma {
+public enum Koma {
     /**
      * 番兵として盤上を囲うように設置される壁
      */
