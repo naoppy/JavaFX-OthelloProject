@@ -61,7 +61,7 @@ public class OthelloField {
      */
     public boolean putNewKoma(int y, int x) {
         //範囲外の場合
-        if(x < 0 || y < 0 || x > 7 || y > 7) {
+        if (x < 0 || y < 0 || x > 7 || y > 7) {
             return false;
         }
         //1-indexedに変換
@@ -98,6 +98,10 @@ public class OthelloField {
         if (isUpdated) this.setNextIsWhite(!this.getNextIsWhite());
 
         return isUpdated;
+    }
+
+    public Koma[][] getFieldMap() {
+        return fieldMap;
     }
 
     public boolean getNextIsWhite() {

@@ -15,6 +15,7 @@ public class CUIOthello implements Runnable {
 
     /**
      * 渡された二つのプレイヤーを登録します
+     *
      * @param p1 プレイヤー1
      * @param p2 プレイヤー2
      */
@@ -24,7 +25,7 @@ public class CUIOthello implements Runnable {
     }
 
     public void run() {
-        for(int i = 0; i < 60; i++) {
+        for (int i = 0; i < 60; i++) {
             System.out.println(othelloField.getNextIsWhite() ? "白のターン" : "黒のターン");
             System.out.println(this.DecorateOthelloField());
             input();
@@ -37,21 +38,36 @@ public class CUIOthello implements Runnable {
         Point p;
         do {
             p = puttingPlayer.selectPutKomaPosition();
-        } while(!othelloField.putNewKoma(p.y, p.x));
+        } while (!othelloField.putNewKoma(p.y, p.x));
     }
 
     /**
      * オセロの文字列表現を分かりやすく整形します
+     *
      * @return 装飾されたオセロの盤の文字列表現
      */
     private String DecorateOthelloField() {
         StringBuilder sb = new StringBuilder();
-        String header = " 01234567\n";
-        sb.append(header);
-        String[] gyous = othelloField.toString().split("\n");
-        for(int i = 0; i < gyous.length; i++) {
-            sb.append(i).append(gyous[i]);
-            if(i != gyous.length-1) sb.append("\n");
+        Koma[][] map = othelloField.getFieldMap();
+        sb.append(" 01234567\n");
+        for (int y = 1; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                switch (map[y][x]) {
+                    case WALL:
+                        sb.append(y-1);
+                        break;
+                    case NONE:
+                        sb.append(" ");
+                        break;
+                    case WHITE:
+                        sb.append("O");
+                        break;
+                    case BLACK:
+                        sb.append("X");
+                        break;
+                }
+            }
+            if (y != 8) sb.append("\n");
         }
         return sb.toString();
     }
