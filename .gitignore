@@ -10,5 +10,4 @@ Git-Othello.iml
 .idea/encodings.xml
 .idea/compiler.xml
 .idea/libraries/lib.xml
-./out
-./out/*
+/out/
