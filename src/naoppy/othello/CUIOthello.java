@@ -1,5 +1,8 @@
 package naoppy.othello;
 
+import naoppy.othello.core.Koma;
+import naoppy.othello.core.OthelloField;
+
 import java.awt.*;
 
 public class CUIOthello implements Runnable {

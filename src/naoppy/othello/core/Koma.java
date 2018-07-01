@@ -1,4 +1,4 @@
-package naoppy.othello;
+package naoppy.othello.core;
 
 /**
  * オセロの駒を表す列挙型

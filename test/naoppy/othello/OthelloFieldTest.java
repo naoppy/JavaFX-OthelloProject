@@ -1,5 +1,6 @@
 package naoppy.othello;
 
+import naoppy.othello.core.OthelloField;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

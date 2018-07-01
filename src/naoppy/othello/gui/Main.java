@@ -1,4 +1,4 @@
-package sample;
+package naoppy.othello.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,8 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import naoppy.othello.Koma;
-import naoppy.othello.OthelloField;
+import naoppy.othello.core.Koma;
+import naoppy.othello.core.OthelloField;
 
 public class Main extends Application {
 
@@ -21,14 +21,13 @@ public class Main extends Application {
         GridPane root = new GridPane();
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
-                Image image = new Image(this.getClass().getResourceAsStream("../None.png"));
-                ImageView imageView = new ImageView(image);
+                ImageView imageView = new ImageView();
                 int finalY = y, finalX = x;
                 imageView.setOnMouseClicked(event -> {
                     othelloField.putNewKoma(finalY,finalX);
                     update();
                 });
-                root.add(imageView, y, x);
+                root.add(imageView, finalY, finalX);
             }
         }
         viewer = root;

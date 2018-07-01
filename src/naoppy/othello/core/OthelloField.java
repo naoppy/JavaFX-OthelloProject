@@ -1,4 +1,6 @@
-package naoppy.othello;
+package naoppy.othello.core;
+
+import naoppy.othello.core.Koma;
 
 public class OthelloField {
 
