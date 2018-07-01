@@ -1,5 +1,6 @@
-package naoppy.othello;
+package naoppy.othello.cui;
 
+import naoppy.othello.OthelloPlayer;
 import naoppy.othello.core.Koma;
 import naoppy.othello.core.OthelloField;
 

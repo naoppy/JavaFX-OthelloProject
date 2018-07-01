@@ -56,13 +56,13 @@ public class Main extends Application {
         Image image = null;
         switch (koma) {
             case NONE:
-                image = new Image(this.getClass().getResourceAsStream("../None.png"));
+                image = new Image(this.getClass().getClassLoader().getResourceAsStream("None.png"));
                 break;
             case WHITE:
-                image = new Image(this.getClass().getResourceAsStream("../White.png"));
+                image = new Image(this.getClass().getClassLoader().getResourceAsStream("White.png"));
                 break;
             case BLACK:
-                image = new Image(this.getClass().getResourceAsStream("../Black.png"));
+                image = new Image(this.getClass().getClassLoader().getResourceAsStream("Black.png"));
                 break;
         }
         return image;
