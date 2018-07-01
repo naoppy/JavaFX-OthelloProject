@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import naoppy.othello.core.OthelloField;
 
-public class Main2 extends Application {
+public class Main extends Application {
 
     /**
      * オセロの盤面
