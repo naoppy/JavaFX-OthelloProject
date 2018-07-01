@@ -12,3 +12,4 @@ Git-Othello.iml
 .idea/libraries/lib.xml
 .idea/artifacts/
 /out/
+src/META-INF/MANIFEST.MF
